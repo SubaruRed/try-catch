@@ -1,0 +1,27 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class TemperaturaInvalidaException extends Exception {
+    public TemperaturaInvalidaException(String msg) {
+        super(msg);
+    }
+}
+
+public class Exercicio9 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Digite a temperatura em Celsius: ");
+            double celsius = sc.nextDouble();
+            if (celsius < -273.15) {
+                throw new TemperaturaInvalidaException("Temperatura abaixo do zero absoluto.");
+            }
+            double fahrenheit = (celsius * 9/5) + 32;
+            System.out.println("Temperatura em Fahrenheit: " + fahrenheit);
+        } catch (InputMismatchException e) {
+            System.out.println("Erro: Digite um número válido.");
+        } catch (TemperaturaInvalidaException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}

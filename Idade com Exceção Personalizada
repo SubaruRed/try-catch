@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+class IdadeInvalidaException extends Exception {
+    public IdadeInvalidaException(String msg) {
+        super(msg);
+    }
+}
+
+public class Exercicio8 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Digite a idade: ");
+            int idade = sc.nextInt();
+            if (idade < 0) throw new IdadeInvalidaException("Idade negativa não permitida.");
+
+            if (idade >= 18) {
+                System.out.println("É maior de idade.");
+            } else {
+                System.out.println("É menor de idade.");
+            }
+        } catch (IdadeInvalidaException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}

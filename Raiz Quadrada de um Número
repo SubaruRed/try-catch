@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Exercicio3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Digite um número: ");
+            double numero = sc.nextDouble();
+            if (numero < 0) throw new IllegalArgumentException("Número negativo");
+            System.out.println("Raiz quadrada: " + Math.sqrt(numero));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: Não é possível calcular a raiz quadrada de número negativo.");
+        }
+    }
+}

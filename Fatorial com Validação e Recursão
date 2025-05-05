@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+class NumeroNegativoException extends Exception {
+    public NumeroNegativoException(String msg) {
+        super(msg);
+    }
+}
+
+class LimiteFatorialExcedidoException extends Exception {
+    public LimiteFatorialExcedidoException(String msg) {
+        super(msg);
+    }
+}
+
+public class Exercicio10 {
+    public static long fatorial(int n) throws NumeroNegativoException, LimiteFatorialExcedidoException {
+        if (n < 0) throw new NumeroNegativoException("Número negativo.");
+        if (n > 20) throw new LimiteFatorialExcedidoException("Número maior que 20.");
+        if (n == 0) return 1;
+        return n * fatorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Digite um número para calcular o fatorial: ");
+            int numero = sc.nextInt();
+            System.out.println("Fatorial: " + fatorial(numero));
+        } catch (NumeroNegativoException | LimiteFatorialExcedidoException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado.");
+        }
+    }
+}
